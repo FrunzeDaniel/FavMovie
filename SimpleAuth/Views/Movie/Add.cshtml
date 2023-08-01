@@ -1,0 +1,23 @@
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime JS
+@model SimpleAuth.Models.AddMovieViewModel
+
+<div class="movieSelector">
+    <button class="button-40 popular" role="button">Popular</button>
+    <button class="button-40 new" role="button">New</button>
+    <button class="button-40 upcoming" role="button">Upcoming</button>
+    <div class="search">
+        <button class="searchBtn"></button>
+        <input class="searchInput">
+    </div>
+</div>
+<div class="movies">
+  </div>
+ <form method="post" action="Add" class="mt-5">
+  <div class="mb-3">
+    <label for="" class="form-label"></label>
+    <input type="hidden" class="form-control" asp-for="MovieId" id="movie_id">
+  </div>
+  <button type="submit" class="btn btn-primary heartBtn" id="submit">Submit</button>
+</form>
+   <script src="~/js/script.js"></script>

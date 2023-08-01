@@ -1,0 +1,65 @@
+﻿@model List<SimpleAuth.Models.FavouriteFilms>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="movies"></div>
+@foreach (var movies in Model)
+{
+    <script>
+       function getMovie(id) {
+            const api_key = "66c7da9056c954f77c125e81ac34ad7a"
+            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
+                .then(response => response.json())
+                .then(response => {
+                        const name = response.original_title;
+                    const poster = response.poster_path;
+                        const bg = response.backdrop_path;
+                        const id = response.id;
+                        const year = response.release_date;
+                        const runtime = response.runtime;
+                        const desc = response.overview;
+                    const movie = ` <div class="movie_card" id = ${ id }>
+                                    <div class="info_section">
+                                        <div class="movie_header">
+                                            <img class="locandina" src="https://image.tmdb.org/t/p/original/${poster}"/>
+                                            <h1>${name}</h1>
+                                            <h4>${year}</h4>
+                                            <span class="minutes">${runtime}</span>
+                                            <p class="type"></p>
+                                        </div>
+                                        <div class="movie_desc">
+                                            <p class="text">
+                                                ${desc}
+                                            </p>
+                                        </div>
+                                        <div class="movie_social">
+                                            <ul>
+                                                <li><i class="material-icons">share</i></li>
+                                                <li><button class="check"></button></li>
+                                                <li><i class="material-icons">chat_bubble</i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="blur_back bright_back" > <img class="locandina" src="https://image.tmdb.org/t/p/original/${bg}"/></div>
+                                </div >
+                                `
+
+                    document.querySelector('.movies').innerHTML += movie;
+                    console.log(response);
+                    console.log(id);
+                })
+                .catch(err => console.error(err));
+        }
+    getMovie(@movies.FavoriteMovieId);
+    </script>
+ 
+}
+
+<h1>Favourite Movie</h1>
+
+  
+
+
+<script src="~/js/JavaScript.js"></script>

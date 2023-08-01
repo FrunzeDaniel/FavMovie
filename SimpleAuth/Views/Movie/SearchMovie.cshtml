@@ -1,0 +1,14 @@
+﻿@model SimpleAuth.Models.AddMovieViewModel
+<input type="text" id="search_text">
+<div class="movies"></div>
+<button id="search_submit">search</button>
+<div class="movies">
+  </div>
+ <form method="post" action="Add" class="mt-5">
+  <div class="mb-3">
+    <label for="" class="form-label">MovieId</label>
+    <input type="hiden" class="form-control" asp-for="MovieId" id="movie_id">
+  </div>
+  <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+</form>
+<script src="~/js/JavaScript.js"></script>

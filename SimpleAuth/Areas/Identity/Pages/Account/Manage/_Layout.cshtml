@@ -1,0 +1,24 @@
+﻿@model List<SimpleAuth.Models.FavouriteFilms>
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+@foreach(var movies in Model)
+{
+        <h1>movies.FavoriteMovieId</h1>
+}
+
+
+<h1>Favourite Movie</h1>
+<div class="favourite movie"></div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
